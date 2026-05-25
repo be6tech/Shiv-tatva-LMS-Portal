@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Trainer Dashboard – Shiv Tatva LMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0B1F3A;--orange:#FF7A00;--bg:#fdf6ef;--border:#e8ddd1;--muted:#7a8fb5}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--navy)}
+.layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.side{background:var(--navy);padding:22px 16px;color:#fff}
+.side h2{font-family:'Nunito',sans-serif;font-size:15px;font-weight:900;margin-bottom:20px}
+.side h2 em{color:var(--orange);font-style:normal}
+.side a{display:block;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,.55);margin-bottom:4px}
+.side a.active,.side a:hover{background:rgba(255,122,0,.25);color:#fff}
+.main{padding:28px 32px}
+h1{font-family:'Nunito',sans-serif;font-size:24px;font-weight:900;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+.stat{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:20px}
+.stat .n{font-family:'Nunito',sans-serif;font-size:26px;font-weight:900;color:var(--orange)}
+.stat .l{font-size:12px;color:var(--muted);font-weight:600}
+.panel{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:22px}
+.panel h3{font-family:'Nunito',sans-serif;font-size:15px;font-weight:900;margin-bottom:14px}
+.row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);font-size:13px;font-weight:600}
+.row:last-child{border:none}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.side{display:none}.grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="side">
+    <h2>SHIV<em>TATVA</em></h2>
+    <a href="#" class="active">📊 Dashboard</a>
+    <a href="#">📚 My Batches</a>
+    <a href="#">📝 Assignments</a>
+    <a href="#">✅ Attendance</a>
+    <a href="#">📹 Live Classes</a>
+    <a href="index.html" style="margin-top:24px">← Logout</a>
+  </aside>
+  <main class="main">
+    <h1>Trainer Portal</h1>
+    <p style="color:var(--muted);font-size:14px;margin:-16px 0 24px" id="welcome">Welcome, Trainer</p>
+    <div class="grid">
+      <div class="stat"><div class="n">3</div><div class="l">Active Batches</div></div>
+      <div class="stat"><div class="n">142</div><div class="l">Total Students</div></div>
+      <div class="stat"><div class="n">18</div><div class="l">Pending Reviews</div></div>
+    </div>
+    <div class="panel">
+      <h3>Today's Schedule</h3>
+      <div class="row"><span>7:00 PM — Java Full Stack (Batch Jun)</span><span>48 students</span></div>
+      <div class="row"><span>9:00 PM — Spring Boot Lab</span><span>32 students</span></div>
+      <div class="row"><span>Tomorrow — Mock Interview Panel</span><span>12 students</span></div>
+    </div>
+  </main>
+</div>
+<script>
+const e = new URLSearchParams(location.search).get('email') || 'trainer@shivtatva.com';
+document.getElementById('welcome').textContent = 'Welcome, ' + e.split('@')[0];
+</script>
+</body>
+</html>

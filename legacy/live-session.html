@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Free Live Session – Shiv Tatva LMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0B1F3A;--orange:#FF7A00;--bg:#fdf6ef;--border:#e8ddd1;--muted:#7a8fb5;--green:#16a34a}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--navy)}
+a{text-decoration:none;color:inherit}
+.nav-wrap{padding:18px 5%}
+nav{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.nav-logo-img{height:54px;width:auto;max-width:220px;object-fit:contain}
+.page{padding:40px 5% 80px;max-width:900px;margin:0 auto}
+.hero{background:linear-gradient(135deg,var(--navy),#152d52);border-radius:24px;padding:40px;color:#fff;margin-bottom:32px}
+.hero h1{font-family:'Nunito',sans-serif;font-size:clamp(24px,4vw,34px);font-weight:900;margin-bottom:10px}
+.hero h1 span{color:var(--orange)}
+.hero p{font-size:15px;opacity:.7;line-height:1.7;margin-bottom:20px;font-weight:500}
+.plan-note{font-size:13px;opacity:.85;margin-top:8px}
+.plan-note a{color:var(--orange);font-weight:700}
+.live-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,122,0,.2);border:1px solid rgba(255,122,0,.4);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:700;color:var(--orange);margin-bottom:16px}
+.live-pill::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--orange);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:28px}
+.card h2{font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;margin-bottom:16px}
+.session-item{padding:14px 0;border-bottom:1px solid var(--border)}
+.session-item:last-child{border-bottom:none}
+.s-time{font-size:12px;font-weight:800;color:var(--orange)}
+.s-title{font-size:15px;font-weight:800;margin:4px 0}
+.s-meta{font-size:12px;color:var(--muted);font-weight:500}
+label{display:block;font-size:12px;font-weight:700;margin-bottom:6px}
+input,select{width:100%;border:1.5px solid var(--border);border-radius:12px;padding:12px 16px;font-family:'Manrope',sans-serif;font-size:14px;margin-bottom:14px;outline:none}
+input:focus,select:focus{border-color:var(--orange)}
+.btn{width:100%;background:var(--orange);color:#fff;border:none;padding:14px;border-radius:50px;font-size:15px;font-weight:800;cursor:pointer}
+.success{display:none;text-align:center;padding:24px;color:var(--green);font-weight:700}
+.success.show{display:block}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="nav-wrap">
+  <nav>
+    <a href="index.html"><img src="assets/logo.png" alt="Shiv Tatva" class="nav-logo-img"/></a>
+    <a href="index.html" style="font-size:14px;font-weight:700;color:var(--muted)">← Home</a>
+  </nav>
+</div>
+<div class="page">
+  <div class="hero">
+    <div class="live-pill">FREE LIVE SESSION</div>
+    <h1>Experience a <span>Real Shiv Tatva</span> Class</h1>
+    <p>Join our next free demo — live Q&A with industry mentors. No payment required. Ask about Basic, Pro, or Premium course plans.</p>
+    <p class="plan-note">Full courses: <a href="pricing.html">Basic ₹40K · Pro ₹70K · Premium ₹1.2L</a></p>
+    <div style="font-size:14px;font-weight:700">📅 Next session: Saturday, 7:00 PM IST · Zoom</div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <h2>📅 Upcoming Sessions</h2>
+      <div class="session-item">
+        <div class="s-time">Sat · 7:00 PM</div>
+        <div class="s-title">Java Full Stack — Plan Comparison</div>
+        <div class="s-meta">Arun Krishnan · 90 min · Zoom</div>
+      </div>
+      <div class="session-item">
+        <div class="s-time">Wed · 6:30 PM</div>
+        <div class="s-title">Cloud Computing — Career Path</div>
+        <div class="s-meta">Priya Mehta · 60 min · Google Meet</div>
+      </div>
+      <div class="session-item">
+        <div class="s-time">Sun · 11:00 AM</div>
+        <div class="s-title">Resume, LinkedIn & Placement Materials</div>
+        <div class="s-meta">Placement Cell · Doubt Q&A · 45 min · Zoom</div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Register for Free</h2>
+      <form id="reg-form">
+        <label>Name *</label>
+        <input name="name" required placeholder="Your full name"/>
+        <label>Email *</label>
+        <input name="email" type="email" required placeholder="you@email.com"/>
+        <label>Phone *</label>
+        <input name="phone" type="tel" required placeholder="+91"/>
+        <label>Interested Course</label>
+        <select name="interest" id="interest-select"></select>
+        <label>Preferred Plan (optional)</label>
+        <select name="plan">
+          <option value="">Not sure yet</option>
+          <option value="basic">Basic — ₹40,000</option>
+          <option value="pro">Pro — ₹70,000</option>
+          <option value="premium">Premium — ₹1,20,000</option>
+        </select>
+        <button type="submit" class="btn">Reserve My Seat →</button>
+      </form>
+      <div class="success" id="success">✅ You're registered! Check your email for the Zoom link.</div>
+    </div>
+  </div>
+</div>
+<script src="courses.js"></script>
+<script src="cert-curricula.js"></script>
+<script>
+const sel = document.getElementById('interest-select');
+if (sel) {
+  let html = '<option value="">Select a program</option>';
+  if (typeof COURSES !== 'undefined') {
+    html += '<optgroup label="Full Courses">' +
+      Object.values(COURSES).map(c => '<option value="course-' + c.id + '">' + c.name + '</option>').join('') +
+      '</optgroup>';
+  }
+  if (typeof CERT_CURRICULA !== 'undefined') {
+    html += '<optgroup label="Certifications (₹1,500)">' +
+      Object.values(CERT_CURRICULA).map(c =>
+        '<option value="cert-' + c.id + '">' + c.title + (c.titleEm ? ' ' + c.titleEm : '') + ' — ₹1,500</option>'
+      ).join('') +
+      '</optgroup>';
+  }
+  html += '<option value="placement">Placement Program</option><option value="internship">Internship</option>';
+  sel.innerHTML = html;
+}
+document.getElementById('reg-form').addEventListener('submit', e => {
+  e.preventDefault();
+  document.getElementById('reg-form').style.display = 'none';
+  document.getElementById('success').classList.add('show');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Student Dashboard – Shiv Tatva LMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0B1F3A;--navy2:#152d52;--orange:#FF7A00;--orange2:#ff9633;--orange-soft:#fff3e8;--bg:#fdf6ef;--border:#e8ddd1;--muted:#7a8fb5;--text2:#2d4a6e;--green:#16a34a;--green-soft:#f0fdf4}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--navy);min-height:100vh}
+a{text-decoration:none;color:inherit}
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.sidebar{background:var(--navy);padding:24px 18px;display:flex;flex-direction:column}
+.sb-logo{display:flex;align-items:center;gap:10px;margin-bottom:32px;padding:0 8px}
+.sb-logo-img{height:48px;width:auto;max-width:180px;object-fit:contain;display:block}
+.sb-logo-text{display:none}
+.sb-user{background:rgba(255,255,255,.08);border-radius:14px;padding:14px;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.sb-av{width:40px;height:40px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;color:#fff;font-size:14px}
+.sb-name{font-size:13px;font-weight:800;color:#fff}
+.sb-role{font-size:11px;color:rgba(255,255,255,.5);font-weight:500}
+.sb-nav{list-style:none;flex:1}
+.sb-nav li{margin-bottom:4px}
+.sb-nav a{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:12px;font-size:14px;font-weight:600;color:rgba(255,255,255,.55);transition:all .2s}
+.sb-nav a:hover,.sb-nav a.active{background:rgba(255,122,0,.2);color:#fff}
+.sb-nav a.active{border-left:3px solid var(--orange)}
+.sb-foot{margin-top:auto;padding-top:20px}
+.sb-logout{display:block;text-align:center;padding:10px;border-radius:50px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);font-size:13px;font-weight:700}
+.sb-logout:hover{border-color:var(--orange);color:var(--orange)}
+.main{padding:28px 32px 48px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+.topbar h1{font-family:'Nunito',sans-serif;font-size:26px;font-weight:900}
+.topbar p{font-size:14px;color:var(--muted);font-weight:500;margin-top:4px}
+.btn-sm{background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:13px;font-weight:800;cursor:pointer}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.stat-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:20px}
+.stat-card .n{font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;color:var(--orange)}
+.stat-card .l{font-size:12px;color:var(--muted);font-weight:600;margin-top:4px}
+.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+.panel{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:24px}
+.panel h2{font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+.panel h2 a{font-size:12px;color:var(--orange);font-weight:700}
+.course-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.course-row:last-child{border-bottom:none;padding-bottom:0}
+.cr-icon{width:44px;height:44px;border-radius:12px;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-size:22px}
+.cr-info{flex:1}
+.cr-name{font-size:14px;font-weight:800}
+.cr-meta{font-size:12px;color:var(--muted);font-weight:500}
+.progress-bar{height:6px;background:var(--bg);border-radius:50px;margin-top:8px;overflow:hidden}
+.progress-fill{height:100%;background:var(--orange);border-radius:50px}
+.cr-pct{font-size:12px;font-weight:800;color:var(--orange)}
+.tier-plan-badge{display:inline-block;font-size:10px;font-weight:800;padding:3px 10px;border-radius:50px;background:var(--navy);color:#fff;margin-left:6px;vertical-align:middle}
+.task-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.task-list li{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--text2);padding:12px;background:var(--bg);border-radius:12px}
+.task-list li .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-orange{background:var(--orange)}
+.dot-green{background:var(--green)}
+.dot-navy{background:var(--navy)}
+.badge{display:inline-block;font-size:10px;font-weight:800;padding:3px 10px;border-radius:50px}
+.badge-pending{background:var(--orange-soft);color:var(--orange)}
+.badge-done{background:var(--green-soft);color:var(--green)}
+.panel-section{display:none}
+.panel-section.active{display:block}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .grid2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <a href="index.html" class="sb-logo">
+      <img src="assets/logo.png" alt="Shiv Tatva Solutions" class="sb-logo-img"/>
+      <span class="sb-logo-text">SHIV<em>TATVA</em></span>
+    </a>
+    <div class="sb-user">
+      <div class="sb-av" id="user-initials">RK</div>
+      <div>
+        <div class="sb-name" id="user-name">Rahul Kumar</div>
+        <div class="sb-role">Student · Batch Jun 2025</div>
+      </div>
+    </div>
+    <ul class="sb-nav">
+      <li><a href="#" class="active" data-view="overview">📊 Overview</a></li>
+      <li><a href="#" data-view="courses">📚 My Courses</a></li>
+      <li><a href="#" data-view="assignments">📝 Assignments</a></li>
+      <li><a href="#" data-view="placement">🚀 Placement</a></li>
+      <li><a href="#" data-view="certs">🏅 Certificates</a></li>
+      <li><a href="live-session.html">📹 Live Session</a></li>
+    </ul>
+    <div class="sb-foot">
+      <a href="index.html" class="sb-logout">← Logout</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1 id="view-title">Dashboard</h1>
+        <p id="view-sub">Welcome back! Here's your learning progress.</p>
+      </div>
+      <button class="btn-sm" onclick="location.href='live-session.html'">Join Today's Class</button>
+    </div>
+
+    <div id="view-overview" class="panel-section active">
+      <div class="stats-row">
+        <div class="stat-card"><div class="n">68%</div><div class="l">Overall Progress</div></div>
+        <div class="stat-card"><div class="n">24</div><div class="l">Classes Attended</div></div>
+        <div class="stat-card"><div class="n">3</div><div class="l">Pending Assignments</div></div>
+        <div class="stat-card"><div class="n">92%</div><div class="l">Attendance Rate</div></div>
+      </div>
+      <div class="grid2">
+        <div class="panel">
+          <h2>My Courses <a href="#" onclick="showView('courses');return false">View all</a></h2>
+          <div class="course-row">
+            <div class="cr-icon">☕</div>
+            <div class="cr-info">
+              <div class="cr-name">Java Full Stack Development <span class="tier-plan-badge">Premium</span></div>
+              <div class="cr-meta">Month 4 of 6 · Live class tomorrow 7 PM · <a href="course-detail.html?course=java&tier=premium" style="color:var(--orange);font-weight:700">View curriculum</a></div>
+              <div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div>
+            </div>
+            <div class="cr-pct">68%</div>
+          </div>
+        </div>
+        <div class="panel">
+          <h2>Upcoming</h2>
+          <ul class="task-list">
+            <li><span class="dot dot-orange"></span> Spring Boot REST API — Due Fri</li>
+            <li><span class="dot dot-navy"></span> Mock Interview — Mon 4 PM</li>
+            <li><span class="dot dot-green"></span> Placement Drive: TCS — Jun 28</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="view-courses" class="panel-section">
+      <div class="panel">
+        <h2>Enrolled Courses</h2>
+        <div class="course-row">
+          <div class="cr-icon">☕</div>
+          <div class="cr-info">
+            <div class="cr-name">Java Full Stack Development <span class="tier-plan-badge">Premium</span></div>
+            <div class="cr-meta">Next: Microservices & JWT · Instructor: Arun K. · ₹1,20,000 plan</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div>
+          </div>
+          <div class="cr-pct">68%</div>
+        </div>
+        <div class="course-row">
+          <div class="cr-icon">📊</div>
+          <div class="cr-info">
+            <div class="cr-name">Aptitude for Placements</div>
+            <div class="cr-meta">Bundled with placement program</div>
+            <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+          </div>
+          <div class="cr-pct">40%</div>
+        </div>
+        <p style="margin-top:16px;font-size:13px;color:var(--muted)"><a href="index.html#programs" style="color:var(--orange);font-weight:700">+ Browse more courses</a></p>
+      </div>
+    </div>
+
+    <div id="view-assignments" class="panel-section">
+      <div class="panel">
+        <h2>Assignments & Quizzes</h2>
+        <ul class="task-list">
+          <li><span class="dot dot-orange"></span> REST API Project <span class="badge badge-pending">Due in 2 days</span></li>
+          <li><span class="dot dot-orange"></span> SQL Joins Quiz <span class="badge badge-pending">Due in 5 days</span></li>
+          <li><span class="dot dot-green"></span> OOP Concepts Assignment <span class="badge badge-done">Submitted</span></li>
+          <li><span class="dot dot-green"></span> Git & GitHub Lab <span class="badge badge-done">Graded · 92%</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="view-placement" class="panel-section">
+      <div class="panel">
+        <h2>Placement Status</h2>
+        <ul class="task-list">
+          <li><span class="dot dot-green"></span> Resume building workshop completed</li>
+          <li><span class="dot dot-green"></span> LinkedIn profile optimized</li>
+          <li><span class="dot dot-green"></span> Placement material pack downloaded</li>
+          <li><span class="dot dot-green"></span> 2 mock interviews + weekly doubt sessions attended</li>
+          <li><span class="dot dot-orange"></span> TCS Drive — Registered · Interview Jun 28</li>
+          <li><span class="dot dot-navy"></span> Infosys Drive — Opens Jul 5</li>
+        </ul>
+        <button class="btn-sm" style="margin-top:16px" onclick="location.href='apply.html?type=placement'">Register for New Drive</button>
+      </div>
+    </div>
+
+    <div id="view-certs" class="panel-section">
+      <div class="panel">
+        <h2>My Certificates</h2>
+        <ul class="task-list">
+          <li><span class="dot dot-green"></span> Git & Version Control — <span class="badge badge-done">Issued</span></li>
+          <li><span class="dot dot-orange"></span> Java Full Stack — <span class="badge badge-pending">On completion</span></li>
+        </ul>
+        <p style="margin-top:14px;font-size:13px;color:var(--muted)">Certificates are QR-verified. Share your ID: <strong>ST-2025-08421</strong></p>
+      </div>
+    </div>
+  </main>
+</div>
+<script>
+const titles = {
+  overview: ['Dashboard', 'Welcome back! Here\'s your learning progress.'],
+  courses: ['My Courses', 'Track progress across enrolled programs.'],
+  assignments: ['Assignments', 'Pending tasks and graded submissions.'],
+  placement: ['Placement', 'Doubt sessions, resume & LinkedIn, placement materials, mocks, and drives.'],
+  certs: ['Certificates', 'Earned and upcoming credentials.']
+};
+function showView(id) {
+  document.querySelectorAll('.panel-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('view-' + id).classList.add('active');
+  document.querySelectorAll('.sb-nav a[data-view]').forEach(a => {
+    a.classList.toggle('active', a.dataset.view === id);
+  });
+  const t = titles[id] || titles.overview;
+  document.getElementById('view-title').textContent = t[0];
+  document.getElementById('view-sub').textContent = t[1];
+}
+document.querySelectorAll('.sb-nav a[data-view]').forEach(a => {
+  a.addEventListener('click', e => { e.preventDefault(); showView(a.dataset.view); });
+});
+const params = new URLSearchParams(location.search);
+const email = params.get('email') || sessionStorage.getItem('st_email');
+if (email) {
+  sessionStorage.setItem('st_email', email);
+  const name = email.split('@')[0].replace(/[._]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  const initials = name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase() || 'ST';
+  document.getElementById('user-name').textContent = name;
+  document.getElementById('user-initials').textContent = initials;
+}
+</script>
+</body>
+</html>

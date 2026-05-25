@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Us – Shiv Tatva LMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0B1F3A;--orange:#FF7A00;--bg:#fdf6ef;--border:#e8ddd1;--muted:#7a8fb5}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--navy)}
+a{text-decoration:none;color:inherit}
+.nav-wrap{padding:18px 5%}
+nav{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:54px;width:auto;max-width:220px;object-fit:contain;display:block}
+.page{padding:48px 5% 80px;max-width:1000px;margin:0 auto}
+h1{font-family:'Nunito',sans-serif;font-size:clamp(28px,5vw,42px);font-weight:900;margin-bottom:12px}
+.lead{font-size:17px;color:var(--muted);line-height:1.8;font-weight:500;margin-bottom:48px;max-width:720px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px}
+.stat{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:24px;text-align:center}
+.stat .n{font-family:'Nunito',sans-serif;font-size:32px;font-weight:900;color:var(--orange)}
+.stat .l{font-size:13px;color:var(--muted);font-weight:600;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-bottom:48px}
+.team-card{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:24px;text-align:center}
+.team-av{width:64px;height:64px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;margin:0 auto 12px;font-size:18px}
+.team-name{font-weight:800;font-size:15px}
+.team-role{font-size:12px;color:var(--muted);margin-top:4px;font-weight:500}
+.mission{background:linear-gradient(135deg,var(--navy),#152d52);border-radius:24px;padding:40px;color:#fff}
+.mission h2{font-family:'Nunito',sans-serif;font-size:24px;font-weight:900;margin-bottom:12px}
+.mission p{font-size:15px;opacity:.75;line-height:1.8;font-weight:500}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="nav-wrap">
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="Shiv Tatva Solutions Private Limited" class="nav-logo-img"/></a>
+    <a href="index.html" style="font-weight:700;color:var(--muted)">← Home</a>
+  </nav>
+</div>
+<div class="page">
+  <h1>About Shiv Tatva</h1>
+  <p class="lead">Shiv Tatva Solutions offers seven official programs — Java Full Stack, Python Full Stack, Cloud Computing, AI & ML, Cyber Security, SAP FICO & HANA, and Salesforce — with live mentorship and end-to-end placement support, headquartered in Hyderabad, Telangana.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">5000+</div><div class="l">Students Trained</div></div>
+    <div class="stat"><div class="n">95%</div><div class="l">Placement Rate</div></div>
+    <div class="stat"><div class="n">200+</div><div class="l">Hiring Partners</div></div>
+    <div class="stat"><div class="n">50+</div><div class="l">Expert Trainers</div></div>
+  </div>
+  <h2 style="font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;margin-bottom:20px">Our Leadership</h2>
+  <div class="grid">
+    <div class="team-card"><div class="team-av">AK</div><div class="team-name">Arun Krishnan</div><div class="team-role">Founder & Lead Instructor</div></div>
+    <div class="team-card"><div class="team-av">PM</div><div class="team-name">Priya Mehta</div><div class="team-role">Cloud & DevOps Head</div></div>
+    <div class="team-card"><div class="team-av">RS</div><div class="team-name">Ravi Singh</div><div class="team-role">Placement Director</div></div>
+    <div class="team-card"><div class="team-av">SK</div><div class="team-name">Sneha Kapoor</div><div class="team-role">Student Success Lead</div></div>
+  </div>
+  <div class="mission">
+    <h2>Our Mission</h2>
+    <p>To bridge the gap between academic learning and industry expectations by delivering practical, project-based education with measurable career outcomes for every student who walks through our doors — online or in-person.</p>
+  </div>
+</div>
+</body>
+</html>

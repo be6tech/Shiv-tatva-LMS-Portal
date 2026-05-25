@@ -1,0 +1,71 @@
+.dashboard-layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.dashboard-layout.admin-side .dashboard-sidebar{background:#0a1628}
+.dashboard-sidebar{background:var(--navy);padding:24px 18px;display:flex;flex-direction:column;color:#fff}
+.dashboard-sidebar h2{font-family:'Nunito',sans-serif;font-size:15px;font-weight:900;margin-bottom:20px}
+.dashboard-sidebar h2 em{color:var(--orange);font-style:normal}
+.dashboard-sidebar .side-link{display:block;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,.55);margin-bottom:4px;border:none;background:transparent;width:100%;text-align:left;cursor:pointer;font-family:'Manrope',sans-serif}
+.dashboard-sidebar .side-link:hover,.dashboard-sidebar .side-link.active{background:rgba(243,112,33,.25);color:#fff}
+.dashboard-sidebar .side-link.active{border-left:3px solid var(--orange)}
+.sb-logo{display:flex;align-items:center;margin-bottom:32px}
+.sb-logo-img{height:48px;width:auto;max-width:180px;object-fit:contain;background:#fff;border-radius:8px;padding:4px 8px}
+.sb-user{background:rgba(255,255,255,.08);border-radius:14px;padding:14px;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.sb-av{width:40px;height:40px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;color:#fff;font-size:14px;flex-shrink:0}
+.sb-name{font-size:13px;font-weight:800;color:#fff}
+.sb-role{font-size:11px;color:rgba(255,255,255,.5);font-weight:500}
+.sb-foot{margin-top:auto;padding-top:20px}
+.sb-logout{display:block;text-align:center;padding:10px;border-radius:50px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);font-size:13px;font-weight:700}
+.sb-logout:hover{border-color:var(--orange);color:var(--orange)}
+.dashboard-main{padding:28px 32px 48px;background:var(--bg)}
+.dashboard-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+.dashboard-topbar h1{font-family:'Nunito',sans-serif;font-size:26px;font-weight:900}
+.dashboard-topbar p{font-size:14px;color:var(--muted);font-weight:500;margin-top:4px}
+.btn-dash-sm{background:var(--orange);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Manrope',sans-serif}
+.btn-dash-sm:hover{background:var(--orange2)}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.stat-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:20px}
+.stat-card .n{font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;color:var(--orange)}
+.stat-card .l{font-size:12px;color:var(--muted);font-weight:600;margin-top:4px}
+.grid2-dash{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+.dash-panel{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:24px}
+.dash-panel h2{font-family:'Nunito',sans-serif;font-size:16px;font-weight:900;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+.dash-panel h2 a{font-size:12px;color:var(--orange);font-weight:700}
+.course-row{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.course-row:last-child{border-bottom:none;padding-bottom:0}
+.cr-icon{width:44px;height:44px;border-radius:12px;background:var(--orange-soft);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.cr-info{flex:1;min-width:0}
+.cr-name{font-size:14px;font-weight:800}
+.cr-meta{font-size:12px;color:var(--muted);font-weight:500}
+.progress-bar{height:6px;background:var(--bg);border-radius:50px;margin-top:8px;overflow:hidden}
+.progress-fill{height:100%;background:var(--orange);border-radius:50px}
+.cr-pct{font-size:12px;font-weight:800;color:var(--orange);flex-shrink:0}
+.tier-plan-badge{display:inline-block;font-size:10px;font-weight:800;padding:3px 10px;border-radius:50px;background:var(--navy);color:#fff;margin-left:6px;vertical-align:middle}
+.task-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.task-list li{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--text2);padding:12px;background:var(--bg);border-radius:12px;flex-wrap:wrap}
+.task-list li .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-orange{background:var(--orange)}
+.dot-green{background:var(--green)}
+.dot-navy{background:var(--navy)}
+.badge-dash{display:inline-block;font-size:10px;font-weight:800;padding:3px 10px;border-radius:50px;margin-left:auto}
+.badge-pending{background:var(--orange-soft);color:var(--orange)}
+.badge-done{background:var(--green-soft);color:var(--green)}
+.dash-view{display:none}
+.dash-view.active{display:block}
+.admin-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.admin-stat{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:18px}
+.admin-stat .n{font-family:'Nunito',sans-serif;font-size:24px;font-weight:900;color:var(--orange)}
+.admin-stat .l{font-size:11px;color:var(--muted);font-weight:600;margin-top:4px}
+.admin-panels{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.admin-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;font-weight:600}
+.admin-row:last-child{border:none}
+.badge-new-sm{font-size:10px;padding:3px 8px;border-radius:50px;font-weight:800;background:#fff3e8;color:var(--orange)}
+.badge-ok-sm{font-size:10px;padding:3px 8px;border-radius:50px;font-weight:800;background:#f0fdf4;color:var(--green)}
+.btn-admin-sm{background:var(--navy);color:#fff;border:none;padding:6px 14px;border-radius:50px;font-size:11px;font-weight:700;cursor:pointer}
+.trainer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+@media(max-width:900px){
+  .dashboard-layout{grid-template-columns:1fr}
+  .dashboard-sidebar{display:none}
+  .stats-row,.admin-grid{grid-template-columns:repeat(2,1fr)}
+  .grid2-dash,.admin-panels{grid-template-columns:1fr}
+  .trainer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:500px){.stats-row,.admin-grid,.trainer-grid{grid-template-columns:1fr}}

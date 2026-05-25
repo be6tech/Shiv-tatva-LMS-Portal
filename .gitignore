@@ -1,0 +1,11 @@
+node_modules
+dist
+.DS_Store
+*.log
+.env
+.env.local
+
+# Backend & infra — not part of this frontend repo
+backend/
+docker-compose.yml
+docs/

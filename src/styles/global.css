@@ -1,0 +1,13 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --brand-navy:#0B1C33;--brand-navy-light:#154275;--brand-orange:#F37021;--brand-orange-light:#F58840;
+  --navy:#0B1C33;--navy2:#154275;--orange:#F37021;--orange2:#F58840;
+  --orange-soft:#fff3e8;--orange-mid:#ffd9b3;--bg:#fdf6ef;--bg2:#fff9f4;
+  --white:#fff;--text:#0B1C33;--text2:#2E5A85;--muted:#6B8DB5;
+  --border:#e8ddd1;--green:#16a34a;--green-soft:#f0fdf4;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+#root{min-height:100vh}

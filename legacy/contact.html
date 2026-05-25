@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact – Shiv Tatva LMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0B1F3A;--orange:#FF7A00;--bg:#fdf6ef;--border:#e8ddd1;--muted:#7a8fb5;--green:#16a34a}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--navy)}
+a{text-decoration:none;color:inherit}
+.nav-wrap{padding:18px 5%}
+nav{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:54px;width:auto;max-width:220px;object-fit:contain;display:block}
+.page{padding:48px 5% 80px;max-width:960px;margin:0 auto}
+h1{font-family:'Nunito',sans-serif;font-size:clamp(28px,4vw,36px);font-weight:900;margin-bottom:8px}
+.sub{color:var(--muted);font-size:15px;margin-bottom:36px;font-weight:500}
+.grid{display:grid;grid-template-columns:1fr 1.2fr;gap:28px}
+.info-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:28px}
+.info-item{display:flex;gap:14px;margin-bottom:20px;font-size:14px;font-weight:600}
+.info-item .ico{font-size:22px}
+.info-item div span{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-top:2px}
+.form-card{background:#fff;border:1.5px solid var(--border);border-radius:20px;padding:28px}
+label{display:block;font-size:12px;font-weight:700;margin-bottom:6px}
+input,textarea,select{width:100%;border:1.5px solid var(--border);border-radius:12px;padding:12px 16px;font-family:'Manrope',sans-serif;font-size:14px;margin-bottom:14px;outline:none}
+input:focus,textarea:focus{border-color:var(--orange)}
+textarea{min-height:120px;resize:vertical}
+.btn{background:var(--orange);color:#fff;border:none;padding:14px;border-radius:50px;font-weight:800;width:100%;cursor:pointer}
+.ok{display:none;color:var(--green);font-weight:700;font-size:14px;margin-top:12px;text-align:center}
+.ok.show{display:block}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="nav-wrap">
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="Shiv Tatva Solutions Private Limited" class="nav-logo-img"/></a>
+    <a href="index.html" style="font-weight:700;color:var(--muted)">← Home</a>
+  </nav>
+</div>
+<div class="page">
+  <h1>Contact Us</h1>
+  <p class="sub">Have questions about courses, placements, or partnerships? We're here to help.</p>
+  <div class="grid">
+    <div class="info-card">
+      <div class="info-item"><span class="ico">📞</span><div>+91 98765 43210<span>Mon–Sat, 9 AM – 7 PM</span></div></div>
+      <div class="info-item"><span class="ico">✉️</span><div>info@shivtatva.com<span>Replies within 24 hours</span></div></div>
+      <div class="info-item"><span class="ico">📍</span><div>Hyderabad, Telangana<span>HITEC City · India</span></div></div>
+      <div class="info-item"><span class="ico">💬</span><div>WhatsApp Counselor<span>+91 98765 43210</span></div></div>
+    </div>
+    <div class="form-card">
+      <form id="contact-form">
+        <label>Name *</label>
+        <input name="name" required/>
+        <label>Email *</label>
+        <input type="email" name="email" required/>
+        <label>Subject</label>
+        <select name="subject">
+          <option>Course Inquiry</option>
+          <option>Internship</option>
+          <option>Placement</option>
+          <option>Corporate Training</option>
+          <option>Other</option>
+        </select>
+        <label>Message *</label>
+        <textarea name="message" required placeholder="How can we help?"></textarea>
+        <button type="submit" class="btn">Send Message →</button>
+      </form>
+      <p class="ok" id="ok">✅ Message sent! We'll get back to you soon.</p>
+    </div>
+  </div>
+</div>
+<script>
+document.getElementById('contact-form').addEventListener('submit', e => {
+  e.preventDefault();
+  e.target.style.display = 'none';
+  document.getElementById('ok').classList.add('show');
+});
+</script>
+</body>
+</html>

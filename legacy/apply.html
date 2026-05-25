@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Apply – Shiv Tatva LMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0B1F3A;--orange:#FF7A00;--orange2:#ff9633;--bg:#fdf6ef;--border:#e8ddd1;--muted:#7a8fb5;--green:#16a34a}
+body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--navy)}
+a{text-decoration:none;color:inherit}
+.nav-wrap{padding:18px 5%}
+nav{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo-img{height:54px;width:auto;max-width:220px;object-fit:contain;display:block}
+.page{padding:40px 5% 80px;max-width:720px;margin:0 auto}
+.page h1{font-family:'Nunito',sans-serif;font-size:clamp(26px,4vw,36px);font-weight:900;margin-bottom:8px}
+.page .sub{color:var(--muted);font-size:15px;margin-bottom:32px;font-weight:500;line-height:1.6}
+.form-card{background:#fff;border:1.5px solid var(--border);border-radius:24px;padding:36px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:block;font-size:12px;font-weight:700;margin-bottom:6px}
+input,select,textarea{width:100%;border:1.5px solid var(--border);border-radius:12px;padding:12px 16px;font-family:'Manrope',sans-serif;font-size:14px;margin-bottom:16px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--orange)}
+textarea{min-height:100px;resize:vertical}
+.btn-submit{width:100%;background:var(--orange);color:#fff;border:none;padding:14px;border-radius:50px;font-size:15px;font-weight:800;cursor:pointer}
+.btn-submit:hover{background:var(--orange2)}
+.success{display:none;text-align:center;padding:48px 24px}
+.success.show{display:block}
+.success .ico{font-size:56px;margin-bottom:16px}
+.success h2{font-family:'Nunito',sans-serif;font-size:24px;font-weight:900;margin-bottom:10px}
+.success p{color:var(--muted);font-size:14px;margin-bottom:24px}
+.success a{color:var(--orange);font-weight:800}
+@media(max-width:600px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="nav-wrap">
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="assets/logo.png" alt="Shiv Tatva Solutions Private Limited" class="nav-logo-img"/></a>
+    <a href="index.html" style="font-size:14px;font-weight:700;color:var(--muted)">← Home</a>
+  </nav>
+</div>
+<div class="page">
+  <h1>Apply Now</h1>
+  <p class="sub">Fill in your details and our team will contact you within 24 hours with batch details and next steps.</p>
+  <div class="form-card" id="form-wrap">
+    <form id="apply-form">
+      <div class="grid2">
+        <div><label>Full Name *</label><input name="name" required placeholder="Your name"/></div>
+        <div><label>Phone *</label><input name="phone" type="tel" required placeholder="+91 98765 43210"/></div>
+      </div>
+      <label>Email *</label>
+      <input name="email" type="email" required placeholder="you@email.com"/>
+      <label>Program Type *</label>
+      <select name="type" id="type">
+        <option value="course">Full Course</option>
+        <option value="internship">Internship</option>
+        <option value="placement">Placement Drive</option>
+        <option value="certification">Certification Prep</option>
+      </select>
+      <label>Program / Course</label>
+      <select name="course" id="course"></select>
+      <div id="tier-wrap">
+        <label>Course Plan *</label>
+        <select name="tier" id="tier">
+          <option value="basic">Basic — ₹40,000</option>
+          <option value="pro" selected>Pro — ₹70,000</option>
+          <option value="premium">Premium — ₹1,20,000</option>
+        </select>
+        <p id="tier-hint" style="font-size:12px;color:var(--muted);font-weight:600;margin:-8px 0 16px;line-height:1.5"></p>
+      </div>
+      <label>Message (optional)</label>
+      <textarea name="message" placeholder="Tell us about your background and goals..."></textarea>
+      <button type="submit" class="btn-submit">Submit Application →</button>
+    </form>
+  </div>
+  <div class="form-card success" id="success">
+    <div class="ico">✅</div>
+    <h2>Application Received!</h2>
+    <p>Thank you. Our counselors will reach out within 24 hours.</p>
+    <a href="index.html">← Back to Home</a>
+  </div>
+</div>
+<script src="courses.js"></script>
+<script src="course-tiers.js"></script>
+<script src="internships.js"></script>
+<script src="cert-curricula.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+const typeSel = document.getElementById('type');
+const courseSel = document.getElementById('course');
+const tierWrap = document.getElementById('tier-wrap');
+const tierSel = document.getElementById('tier');
+
+function fillCourses() {
+  courseSel.innerHTML = '';
+  Object.values(COURSES).forEach(c => {
+    const o = document.createElement('option');
+    o.value = c.id;
+    o.textContent = c.name;
+    courseSel.appendChild(o);
+  });
+}
+
+const internOpts = [
+  'Java Backend Developer Intern', 'React Frontend Developer Intern',
+  'AWS Cloud & DevOps Intern', 'ML Engineer Intern', 'UI/UX Design Intern', 'Data Analyst Intern'
+];
+const placeOpts = ['Java Full Stack – TCS', 'Cloud Engineer – Wipro', 'React Developer – Infosys', 'Data Analyst – Cognizant'];
+
+function updateCourseOptions() {
+  const t = typeSel.value;
+  courseSel.innerHTML = '';
+  let list = [];
+  if (t === 'course') {
+    tierWrap.style.display = 'block';
+    Object.values(COURSES).forEach(c => {
+      const o = document.createElement('option');
+      o.value = c.id;
+      o.textContent = c.name;
+      courseSel.appendChild(o);
+    });
+    const pre = params.get('course');
+    if (pre && COURSES[pre]) courseSel.value = pre;
+    const tierPre = params.get('tier');
+    if (tierPre && TIER_PLANS[tierPre]) tierSel.value = tierPre;
+    return;
+  }
+  tierWrap.style.display = 'none';
+  if (t === 'internship') {
+    Object.values(INTERNSHIPS).forEach(i => {
+      const o = document.createElement('option');
+      o.value = i.id;
+      o.textContent = i.role;
+      courseSel.appendChild(o);
+    });
+    const role = params.get('role');
+    if (role && INTERNSHIPS[role]) courseSel.value = role;
+    return;
+  }
+  if (t === 'placement') {
+    placeOpts.forEach((name, i) => {
+      const o = document.createElement('option');
+      o.value = String(i);
+      o.textContent = name;
+      courseSel.appendChild(o);
+    });
+    return;
+  }
+  if (t === 'certification') {
+    Object.values(CERT_CURRICULA).forEach(c => {
+      const o = document.createElement('option');
+      o.value = c.id;
+      o.textContent = c.title;
+      courseSel.appendChild(o);
+    });
+    const pre = params.get('cert');
+    if (pre && CERT_CURRICULA[pre]) courseSel.value = pre;
+  }
+}
+
+function updateTierHint() {
+  const hint = document.getElementById('tier-hint');
+  if (!hint || typeSel.value !== 'course') return;
+  const c = COURSES[courseSel.value];
+  const plan = TIER_PLANS[tierSel.value];
+  if (!c || !plan) { hint.textContent = ''; return; }
+  const months = c.tierMonths[tierSel.value];
+  const mods = c.tierModules[tierSel.value].join(', ');
+  const career = (TIER_CAREER_BENEFITS[tierSel.value] || []).join(' · ');
+  hint.textContent = plan.name + ' — ' + months + ' month(s), modules: ' + mods + '. Career support: ' + career + '.';
+}
+
+courseSel.addEventListener('change', updateTierHint);
+tierSel.addEventListener('change', updateTierHint);
+typeSel.addEventListener('change', () => { updateCourseOptions(); updateTierHint(); });
+if (params.get('type')) typeSel.value = params.get('type');
+updateCourseOptions();
+updateTierHint();
+
+function getApplySummary() {
+  const t = typeSel.value;
+  if (t === 'course') {
+    const c = COURSES[courseSel.value];
+    const plan = TIER_PLANS[tierSel.value];
+    if (c && plan) return c.name + ' — ' + plan.name + ' Plan (' + plan.price + ')';
+  }
+  if (t === 'certification') {
+    const cert = CERT_CURRICULA[courseSel.value];
+    if (cert) return cert.title + (cert.titleEm ? ' ' + cert.titleEm : '') + ' — ' + (cert.price || CERT_PROGRAM_FEE);
+  }
+  return courseSel.options[courseSel.selectedIndex]?.textContent || 'your program';
+}
+
+document.getElementById('apply-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const summary = getApplySummary();
+  const successP = document.querySelector('#success p');
+  if (successP) successP.textContent = 'Thank you. We received your application for ' + summary + '. Our counselors will reach out within 24 hours.';
+  document.getElementById('form-wrap').style.display = 'none';
+  document.querySelector('.page .sub').style.display = 'none';
+  document.querySelector('.page h1').style.display = 'none';
+  document.getElementById('success').classList.add('show');
+});
+</script>
+</body>
+</html>
