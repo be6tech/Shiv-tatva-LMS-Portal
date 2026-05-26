@@ -15,7 +15,7 @@ export default function CertificationDetail() {
     <>
       <div className="course-hero">
         <div className="hero-inner">
-          <Link to="/?program=certifications" className="course-back-link">← Back to Training</Link>
+          <Link to="/training" className="course-back-link">← Back to Training</Link>
           <div className="course-tag"><span className="course-tag-dot" /><span className="course-tag-label">{c.cat} · ₹1,500</span></div>
           <h1>{c.title}{c.titleEm ? <> <em>{c.titleEm}</em></> : null}</h1>
           <p>{c.heroDesc}</p>

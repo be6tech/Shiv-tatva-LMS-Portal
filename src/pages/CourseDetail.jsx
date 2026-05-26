@@ -7,7 +7,9 @@ import { normalizeMonth } from '../utils/curriculum';
 import { buildLessonAccessMap } from '../utils/videoAccess';
 import { refreshEnrollmentsFromApi } from '../utils/enrollment';
 import { hasAuthToken } from '../utils/authSession';
+import { addToCart } from '../utils/cart';
 import '../styles/course-detail.css';
+import '../styles/cart.css';
 
 const TIERS = ['basic', 'pro', 'premium'];
 
@@ -21,6 +23,7 @@ export default function CourseDetail() {
   const [activeTier, setActiveTier] = useState(initialTier);
   const [activeMonth, setActiveMonth] = useState(1);
   const [enrollmentSync, setEnrollmentSync] = useState(0);
+  const [cartMsg, setCartMsg] = useState('');
 
   useEffect(() => {
     const t = searchParams.get('tier');
@@ -49,6 +52,12 @@ export default function CourseDetail() {
   const enrollLink = enrollUrl({ course: course.id, tier: activeTier });
   const demoUrl = `/apply?type=course&course=${course.id}&tier=${activeTier}`;
 
+  const handleAddToCart = () => {
+    const added = addToCart({ courseId: course.id, tier: activeTier });
+    setCartMsg(added ? 'Added to cart!' : 'Already in your cart');
+    window.setTimeout(() => setCartMsg(''), 2500);
+  };
+
   const { map: accessMap } = useMemo(() => {
     const full = curr.months.map(normalizeMonth);
     return buildLessonAccessMap(full, course.id);
@@ -64,7 +73,7 @@ export default function CourseDetail() {
     <>
       <div className="course-hero">
         <div className="hero-inner">
-          <Link to="/?program=courses" className="course-back-link">← Back to Courses</Link>
+          <Link to="/courses" className="course-back-link">← Back to Courses</Link>
           <div className="course-tag"><span className="course-tag-dot" /><span className="course-tag-label">{curr.cat} · 3 Plans</span></div>
           <h1>{heroTitle}</h1>
           <p>{curr.heroDesc}</p>
@@ -158,6 +167,10 @@ export default function CourseDetail() {
               <div className="sc-tier-note">{course.duration} program · {monthCount} months of curriculum · {course.tierModules[activeTier].length} modules</div>
               {course.brochure && <a className="btn-brochure" href={course.brochure} target="_blank" rel="noopener">📄 Download Official Brochure</a>}
               <button type="button" className="btn-enroll-big" onClick={() => navigate(enrollLink)}>Enroll Now</button>
+              <button type="button" className="btn-add-cart" onClick={handleAddToCart}>
+                Add to Cart
+              </button>
+              {cartMsg && <p className="cart-added-msg">{cartMsg}</p>}
               <button type="button" className="btn-demo" onClick={() => navigate(demoUrl)}>Request Free Demo</button>
               <hr className="sc-divider" />
               <ul className="sc-includes">{course.tierIncludes[activeTier].map(x => <li key={x}>{x}</li>)}</ul>

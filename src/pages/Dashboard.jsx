@@ -89,7 +89,7 @@ export default function Dashboard() {
             <div className="cr-pct">40%</div>
           </div>
           <p style={{ marginTop: 16, fontSize: 13, color: 'var(--muted)' }}>
-            <Link to="/?program=courses" style={{ color: 'var(--orange)', fontWeight: 700 }}>+ Browse more courses</Link>
+            <Link to="/courses" style={{ color: 'var(--orange)', fontWeight: 700 }}>+ Browse more courses</Link>
           </p>
         </div>
       </div>

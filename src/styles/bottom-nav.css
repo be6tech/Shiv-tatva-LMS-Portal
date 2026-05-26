@@ -1,0 +1,99 @@
+/* Fixed bottom tab bar — app-style navigation at end of viewport */
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  gap: 4px;
+  padding: 8px 8px calc(8px + env(safe-area-inset-bottom, 0));
+  background: #fff;
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 24px rgba(11, 28, 51, 0.08);
+}
+
+.bottom-nav-item {
+  flex: 1;
+  max-width: 72px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 4px;
+  border: none;
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: 'Manrope', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+}
+
+.bottom-nav-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.bottom-nav-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-nav-badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: var(--orange);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 16px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.bottom-nav-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #9ca3af;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.bottom-nav-item.active .bottom-nav-label {
+  color: var(--orange);
+  font-weight: 800;
+}
+
+.bottom-nav-item:active {
+  opacity: 0.85;
+}
+
+/* Space so footer content isn't hidden behind the bar */
+body.has-bottom-nav {
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0));
+}
+
+@media (min-width: 1024px) {
+  .bottom-nav-label {
+    font-size: 12px;
+  }
+}

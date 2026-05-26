@@ -15,6 +15,11 @@ import InternshipDetail from './pages/InternshipDetail';
 import Dashboard from './pages/Dashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import TrainerDashboard from './pages/TrainerDashboard';
+import CoursesPage from './pages/CoursesPage';
+import InternshipsPage from './pages/InternshipsPage';
+import PlacementPage from './pages/PlacementPage';
+import TrainingPage from './pages/TrainingPage';
+import CartPage from './pages/CartPage';
 
 function LegacyHtmlRedirect() {
   const file = window.location.pathname.split('/').pop() || '';
@@ -68,6 +73,11 @@ export const routes = [
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
+      { path: 'courses', element: <CoursesPage /> },
+      { path: 'internships', element: <InternshipsPage /> },
+      { path: 'placement', element: <PlacementPage /> },
+      { path: 'training', element: <TrainingPage /> },
+      { path: 'cart', element: <CartPage /> },
       { path: 'course/:courseId', element: <CourseDetail /> },
       { path: 'certification/:certId', element: <CertificationDetail /> },
       { path: 'pricing', element: <Pricing /> },

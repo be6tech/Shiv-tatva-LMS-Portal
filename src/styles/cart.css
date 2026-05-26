@@ -1,0 +1,247 @@
+.cart-page .programs-page-hdr {
+  margin-bottom: 28px;
+}
+
+.cart-empty {
+  text-align: center;
+  padding: 48px 24px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.cart-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.cart-empty h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
+.cart-empty p {
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.cart-empty-btn {
+  display: inline-block;
+  background: var(--orange);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.cart-layout {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .cart-layout {
+    grid-template-columns: 1fr 300px;
+    align-items: start;
+  }
+}
+
+.cart-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.cart-item-emoji {
+  font-size: 36px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.cart-item-cat {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cart-item-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 4px 0 10px;
+}
+
+.cart-item-plan {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.cart-tier-badge {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 50px;
+}
+
+.cart-tier-badge.tier-basic {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.cart-tier-badge.tier-pro {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.cart-tier-badge.tier-premium {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.cart-item-price {
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.cart-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.cart-btn-primary {
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.cart-btn-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.cart-btn-remove {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.cart-btn-remove:hover {
+  color: #dc2626;
+}
+
+.cart-summary {
+  padding: 24px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 16px;
+}
+
+.cart-summary h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.cart-summary-total {
+  font-size: 18px;
+  font-weight: 800;
+  opacity: 1;
+  padding-top: 12px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cart-summary-note {
+  font-size: 12px;
+  opacity: 0.75;
+  line-height: 1.5;
+  margin: 16px 0;
+}
+
+.cart-summary-enroll {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 50px;
+  background: var(--orange);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.cart-summary-clear {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50px;
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-add-cart {
+  width: 100%;
+  padding: 14px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border: 1.5px solid var(--navy);
+  background: #fff;
+  color: var(--navy);
+}
+
+.btn-add-cart:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.cart-added-msg {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #16a34a;
+  margin: -4px 0 8px;
+}

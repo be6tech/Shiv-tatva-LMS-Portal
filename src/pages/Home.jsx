@@ -1,25 +1,24 @@
-import { useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, Navigate, useSearchParams } from 'react-router-dom';
 import Hero from '../components/Hero';
-import ProgramsSection from '../components/ProgramsSection';
 import Testimonials from '../components/Testimonials';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { FEATURES } from '../data/homeContent';
 
+const PROGRAM_REDIRECTS = {
+  courses: '/courses',
+  internships: '/internships',
+  placement: '/placement',
+  certifications: '/training'
+};
+
 export default function Home() {
   const [params] = useSearchParams();
-  useScrollReveal([params.get('program')]);
+  useScrollReveal();
 
-  useEffect(() => {
-    const tab = params.get('program');
-    if (tab) {
-      const t = window.setTimeout(() => {
-        document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
-      return () => window.clearTimeout(t);
-    }
-    return undefined;
-  }, [params]);
+  const program = params.get('program');
+  if (program && PROGRAM_REDIRECTS[program]) {
+    return <Navigate to={PROGRAM_REDIRECTS[program]} replace />;
+  }
 
   return (
     <>
@@ -32,7 +31,6 @@ export default function Home() {
           <div className="fade-up" style={{ transitionDelay: '.24s' }}><div className="stat-num">50+</div><div className="stat-lbl">Expert Trainers</div></div>
         </div>
       </section>
-      <ProgramsSection />
       <section className="section" id="features" style={{ background: 'var(--bg)' }}>
         <div className="sec-hdr fade-up">
           <div className="sec-pill">Platform Features</div>
@@ -56,7 +54,7 @@ export default function Home() {
           <p className="cta-sub">Join 5,000+ students who transformed their careers. Your next chapter begins here.</p>
           <div className="cta-btns">
             <Link to="/apply" className="btn-cta-o">Apply Now →</Link>
-            <Link to="/?program=courses" className="btn-cta-w">View All Courses</Link>
+            <Link to="/courses" className="btn-cta-w">View All Courses</Link>
           </div>
         </div>
       </div>

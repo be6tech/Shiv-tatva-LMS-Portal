@@ -1,0 +1,18 @@
+.programs-page {
+  padding: 32px 5% 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.programs-page-hdr {
+  margin-bottom: 36px;
+}
+
+.programs-page-hdr .sec-title {
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+.programs-page-sub {
+  max-width: 640px;
+  margin-bottom: 0;
+}

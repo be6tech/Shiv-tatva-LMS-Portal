@@ -1,4 +1,12 @@
 import { Link } from 'react-router-dom';
+import { SITE_CONTACT, FOOTER_PROGRAM_TABS } from '../data/siteContact';
+
+const PROGRAM_ROUTES = {
+  courses: '/courses',
+  internships: '/internships',
+  placement: '/placement',
+  certifications: '/training'
+};
 
 export default function Footer() {
   return (
@@ -8,10 +16,10 @@ export default function Footer() {
           <img src="/logo.png" alt="Shiv Tatva Solutions Private Limited" className="footer-logo-img" />
           <p>Empowering students with industry-ready skills, real-time projects, and placement support. Your career transformation starts here.</p>
           <div className="socials">
-            <a className="sl" href="#">in</a>
-            <a className="sl" href="#">𝕏</a>
-            <a className="sl" href="#">▶</a>
-            <a className="sl" href="#">ig</a>
+            <a className="sl" href="#" aria-label="LinkedIn">in</a>
+            <a className="sl" href="#" aria-label="X">𝕏</a>
+            <a className="sl" href="#" aria-label="YouTube">▶</a>
+            <a className="sl" href="#" aria-label="Instagram">ig</a>
           </div>
         </div>
         <div className="footer-col">
@@ -20,38 +28,68 @@ export default function Footer() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About Us</Link></li>
             <li><Link to="/pricing">Pricing (Basic / Pro / Premium)</Link></li>
-            <li><Link to="/?program=courses">Courses</Link></li>
-            <li><Link to="/?program=certifications">Training</Link></li>
-            <li><Link to="/?program=internships">Internship</Link></li>
-            <li><Link to="/?program=placement">Placement</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
         <div className="footer-col">
           <h4>Programs</h4>
           <ul>
-            <li><Link to="/course/java">Java Full Stack</Link></li>
-            <li><Link to="/course/python">Python Full Stack</Link></li>
-            <li><Link to="/course/cloud">Cloud Computing</Link></li>
-            <li><Link to="/course/ai">AI & ML</Link></li>
-            <li><Link to="/course/cyber">Cyber Security</Link></li>
-            <li><Link to="/course/sap">SAP FICO & HANA</Link></li>
-            <li><Link to="/course/salesforce">Salesforce</Link></li>
+            {FOOTER_PROGRAM_TABS.map(t => (
+              <li key={t.id}>
+                <Link to={PROGRAM_ROUTES[t.id]}>
+                  {t.icon} {t.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="footer-col">
           <h4>Stay Updated</h4>
-          <p style={{ fontSize: 13, color: 'rgba(255,255,255,.4)', marginBottom: 14, fontWeight: 500 }}>Get course updates and placement news in your inbox.</p>
+          <p style={{ fontSize: 13, color: 'rgba(255,255,255,.4)', marginBottom: 14, fontWeight: 500 }}>
+            Get course updates and placement news in your inbox.
+          </p>
           <div className="nl-row">
             <input type="email" placeholder="Your email address" />
             <button type="button">Subscribe</button>
           </div>
           <div className="footer-contact">
-            📧 info@shivtatva.com<br />📞 +91 98765 43210<br />📍 Hyderabad, Telangana
+            {SITE_CONTACT.emails.map(e => (
+              <a key={e.href} href={e.href} className="footer-contact-link">
+                📧 {e.label}
+              </a>
+            ))}
+            {SITE_CONTACT.phones.map(p => (
+              <a key={p.href} href={p.href} className="footer-contact-link">
+                📞 {p.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>
-      <div className="footer-bottom">© {new Date().getFullYear()} Shiv Tatva Solutions Private Limited. All rights reserved.</div>
+
+      <div className="footer-bottom">
+        <div className="footer-legal">
+          <p className="footer-address">
+            <strong>{SITE_CONTACT.company}</strong>, {SITE_CONTACT.addressLine}
+          </p>
+          <p className="footer-reach">
+            {SITE_CONTACT.emails.map((e, i) => (
+              <span key={e.href}>
+                {i > 0 && ' · '}
+                <a href={e.href}>{e.label}</a>
+              </span>
+            ))}
+            {' · '}
+            {SITE_CONTACT.phones.map((p, i) => (
+              <span key={p.href}>
+                {i > 0 && ' · '}
+                <a href={p.href}>{p.label}</a>
+              </span>
+            ))}
+          </p>
+        </div>
+        <p className="footer-copy">© {new Date().getFullYear()} Shiv Tatva Solutions Private Limited. All rights reserved.</p>
+      </div>
     </footer>
   );
 }

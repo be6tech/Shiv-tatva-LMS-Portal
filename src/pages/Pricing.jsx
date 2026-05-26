@@ -42,7 +42,7 @@ export default function Pricing() {
             </Link>
           ))}
         </div>
-        <p className="compare-note">Training programs: <Link to="/?program=certifications">₹1,500 each</Link></p>
+        <p className="compare-note">Training programs: <Link to="/training">₹1,500 each</Link></p>
       </div>
     </>
   );
